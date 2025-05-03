@@ -5,13 +5,87 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			/* Estilos adicionales para las pestañas */
+			.tabs {
+				display: flex;
+				margin-bottom: 20px;
+				border-bottom: 1px solid #ddd;
+			}
+			.tab-button {
+				padding: 10px 20px;
+				cursor: pointer;
+				background: #f3f3f3;
+				border: 1px solid #ddd;
+				border-bottom: none;
+				margin-right: 5px;
+				border-radius: 5px 5px 0 0;
+				font-weight: 700;
+				transition: all 0.3s ease;
+			}
+			.tab-button:hover {
+				background: #e0e0e0;
+			}
+			.tab-button.active {
+				background: #d52349;
+				color: white;
+				border-color: #d52349;
+			}
+			.tab-content {
+				display: none;
+				padding: 20px 0;
+			}
+			.tab-content.active {
+				display: block;
+			}
+
+			/* Estilo para las imágenes de productos */
+			.image.fit img {
+				width: 320px;
+				height: 320px;
+				object-fit: cover; /* Mantiene la proporción recortando si es necesario */
+				object-position: center; /* Centra la imagen */
+				display: block;
+				margin: 0 auto; /* Centra la imagen horizontalmente */
+				border-radius: 5px; /* Bordes redondeados opcionales */
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+				transition: transform 0.3s ease; /* Efecto hover opcional */
+			}
+
+			/* Efecto hover para mejorar la interacción */
+			.image.fit img:hover {
+				transform: scale(1.05); /* Ligero zoom al pasar el mouse */
+				box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+			}
+
+			/* Ajuste responsive para pantallas más pequeñas */
+			@media screen and (max-width: 736px) {
+				.image.fit img {
+					width: 280px;
+					height: 280px;
+				}
+			}
+
+			/* Ajuste para el sidebar */
+			.sidebar .image.fit img {
+				width: 100%; /* Para que ocupe el ancho del contenedor */
+				height: auto; /* Mantener proporción */
+				max-height: 320px;
+			}
+
+			/* Para la imagen destacada del artículo */
+			.article .image.featured img {
+				width: 100%;
+				height: auto;
+				max-height: 400px; /* Más grande para la imagen principal */
+			}
+		</style>
 	</head>
 	<body class="right-sidebar is-preload">
 		<div id="page-wrapper">
 
 			<!-- Header -->
 				<section id="header">
-
 					<!-- Logo -->
 						<h1><a href="index.html">SportStep</a></h1>
 						<p>Tu paso hacia el mejor calzado deportivo</p>
@@ -44,115 +118,301 @@
 								<li><a href="no-sidebar.html">Contacto</a></li>
 							</ul>
 						</nav>
-
 				</section>
 
 			<!-- Main -->
 				<section id="main">
 					<div class="container">
 						<div class="row">
-							<div class="col-8 col-12-medium">
+							<div class="col-20 col-28-medium">
 
-								<!-- Content -->
-									<article class="box post">
-										<a href="#" class="image featured"><img src="https://imgs.search.brave.com/yaUCFHq1LMl-Uwdi2nQLKfBOZN7EhHLIhqsdSech0-k/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9odHRw/Mi5tbHN0YXRpYy5j/b20vRF9OUV84NDI5/MDMtTUxBNzM0MzIx/NTcyNzlfMTIyMDIz/LVYud2VicA" alt="Tenis para mujer" /></a>
+								<!-- Contenido Principal -->
+								<article class="box post">
+									<header>
+										<h2>Catálogo Completo de Tenis</h2>
+										<p>Encuentra el calzado perfecto para cada miembro de la familia</p>
+									</header>
+
+									<!-- Sistema de Pestañas -->
+									<div class="tabs">
+										<button class="tab-button active" onclick="openTab(event, 'hombres')">Hombres</button>
+										<button class="tab-button" onclick="openTab(event, 'mujeres')">Mujeres</button>
+										<button class="tab-button" onclick="openTab(event, 'ninos')">Niños</button>
+									</div>
+
+									<!-- Pestaña Hombres -->
+									<div id="hombres" class="tab-content active">
 										<header>
-											<h2>Colección Mujer 2023</h2>
-											<p>Descubre lo último en calzado deportivo femenino</p>
+											<h3>Tenis para Hombres</h3>
+											<p>Rendimiento y estilo para el día a día</p>
 										</header>
-										<p>
-											En SportStep nos enorgullece presentar nuestra nueva colección de tenis para mujer, diseñada para combinar estilo, comodidad y rendimiento. Cada par está cuidadosamente seleccionado para ofrecerte la mejor tecnología en calzado deportivo, ya sea que busques para correr, entrenar o simplemente para lucir con tu outfit diario.
-										</p>
-										<section>
-											<header>
-												<h3>Tenis más vendidos</h3>
-											</header>
-											<div class="row">
-												<div class="col-6 col-12-small">
-													<a href="#" class="image fit"><img src="https://imgs.search.brave.com/QCrNH_JgLC2KelzM_gqJ4sbLiGYsXCokQ5e-MQwFlj8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91bmlj/b3Ntb2Rlcm5hLmNv/bS9jZG4vc2hvcC9m/aWxlcy9URU5JUy1O/SUtFLUREOTI3ODMw/MC1NVUpFUi1BWlVM/LTE3ODY2Mi1fNC5q/cGc_dj0xNzM5NTUx/NzczJndpZHRoPTEz/NjU" alt="Nike Air Zoom" /></a>
-													<h4>Nike Air Zoom Pegasus</h4>
-													<p>$2,499.00 MXN</p>
-													<a href="#" class="button">Agregar al carrito</a>
-												</div>
-												<div class="col-6 col-12-small">
-													<a href="#" class="image fit"><img src="https://imgs.search.brave.com/3XNyYP_Ywvw8Ae7UDkn8ECQuJS6KgsLVUPggU3KJHNE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NTFWWlo2SVdkUkwu/anBn" alt="Adidas Ultraboost" /></a>
-													<h4>Adidas Ultraboost 22</h4>
-													<p>$3,199.00 MXN</p>
-													<a href="#" class="button">Agregar al carrito</a>
-												</div>
+										<div class="row">
+											<!-- Producto 1 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/7Q8L5oYDJfAoxbgcj7zEb1BVmL5ZttCS7KiRMYHNoCc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NzFnLWQzQlQ0Tkwu/anBn" alt="Nike Air Max 270" /></a>
+												<h4>Nike Air Max 270</h4>
+												<p>Amortiguación ultra cómoda para todo el día</p>
+												<p>$2,799.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
 											</div>
-										</section>
-										<section>
-											<header>
-												<h3>Nuevos Lanzamientos</h3>
-											</header>
-											<p>
-												No te pierdas nuestros últimos modelos que acaban de llegar a tienda. Tecnología de amortiguación avanzada, materiales transpirables y diseños que marcan tendencia.
-											</p>
-											<div class="row">
-												<div class="col-4 col-12-small">
-													<a href="#" class="image fit"><img src="https://imgs.search.brave.com/JYp_t3muLt4BQRB-00Ib_afr73w6t6ml_thLRYlsTL0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLmJs/b2dzLmVzLzM2YjA1/YS8xMDk2LzQ1MF8x/MDAwLndlYnA" alt="New Balance" /></a>
-													<h5>New Balance Fresh Foam</h5>
-												</div>
-												<div class="col-4 col-12-small">
-													<a href="#" class="image fit"><img src="https://imgs.search.brave.com/08Me2UgpgOiwhaJrB07l68Fwf4Q_u65T07t6jDIuX8c/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NTFXWCt0UDlveUwu/anBn" alt="Puma" /></a>
-													<h5>Puma Velocity Nitro</h5>
-												</div>
-												<div class="col-4 col-12-small">
-													<a href="#" class="image fit"><img src="https://imgs.search.brave.com/clrSOPDERIDPE6OvENQQHVVV-p7LFIRm7yqb37xynHY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMucnVubmVhLmNv/bS9pbWFnZXMvMjAy/MjExL25pa2UtcmVh/Y3QtaW5maW5pdHkt/cnVuLWZseWtuaXQt/My16YXBhdGlsbGFz/LXJ1bm5pbmctNDAw/eDQwMHg4MHhYLmpw/Zz8x" alt="Nike" /></a>
-													<h5>Nike React Infinity</h5>
-												</div>
+											<!-- Producto 2 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/TD4iQbQpMrcqM5z-fw-cjUA9HMG1gMlpCXP2gG_bBTU/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vNDlmT1Za/bHdaMkVVaXlMN05E/bkhJamlNb2FPb2Yz/bGJONnFyem8tczds/dy9yczpmaXQ6NTYw/OjMyMDoxOjAvZzpj/ZS9hSFIwY0hNNkx5/OXRMbTFsL1pHbGhM/V0Z0WVhwdmJpNWov/YjIwdmFXMWhaMlZ6/TDBrdi9OVEZMYjFG/VlUwWllUMHd1L2Fu/Qm4.jpeg" alt="Adidas Ultraboost 22" /></a>
+												<h4>Adidas Ultraboost 22</h4>
+												<p>Tecnología Boost para máxima energía</p>
+												<p>$3,199.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
 											</div>
-										</section>
-									</article>
+											<!-- Producto 3 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/v6nDZj-2aAGMAvkPfVou3e4GPzEc0ys2VcvjENy4A8E/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vcFJMQWNN/ak1YcWYyS3hwZGt2/UWFHUzNtbFJha0Fa/dllabFdFdlF5MnBB/OC9yczpmaXQ6NTYw/OjMyMDoxOjAvZzpj/ZS9hSFIwY0hNNkx5/OXRMbTFsL1pHbGhM/V0Z0WVhwdmJpNWov/YjIwdmFXMWhaMlZ6/TDBrdi9OREZGUkhs/TmVtOHlTMHd1L2Fu/Qm4.jpeg" alt="Puma RS-X" /></a>
+												<h4>Puma RS-X</h4>
+												<p>Estilo retro con comodidad moderna</p>
+												<p>$1,899.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 4 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/eQMzb8Tu0eML5qYwi9ZIA5372aWHnIrlDSJqfnsuYp8/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NTExWjUxNVZ0R0wu/anBn" alt="New Balance 574" /></a>
+												<h4>New Balance 574</h4>
+												<p>Clásico atemporal con suela ENCAP</p>
+												<p>$1,699.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 5 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/FAkMd4pYwsQ29Yzp2o3rzaogAc-o1uNVTiYs4u-Do-M/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjFOVFgtUDBHQ0wu/anBn" alt="Under Armour HOVR Phantom" /></a>
+												<h4>Under Armour HOVR Phantom</h4>
+												<p>Tecnología HOVR para carrera suave</p>
+												<p>$2,499.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 6 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/fqb3A3qy1--n48E8SeKlOvMe-v73PTMI-jqBfiQtPMA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjE5UkFmTGpraEwu/anBn" alt="Nike React Infinity Run" /></a>
+												<h4>Nike React Infinity Run</h4>
+												<p>Para corredores que buscan reducir lesiones</p>
+												<p>$3,299.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 7 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/VUb4t9H47uiwkd4NMT7bbQqCjyMtrvN6P6KFMxQjwr0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9yZXNv/dXJjZXMuY2xhcm9z/aG9wLmNvbS9tZWRp/b3MtcGxhemF2aXAv/bWt0LzY0NzE0M2Ez/ZGZlM2VfZnY5MDE4/X2FhenVsanBnLmpw/Zz9zY2FsZT01MDAm/cWx0eT03NQ" alt="Adidas NMD R1" /></a>
+												<h4>Adidas NMD R1</h4>
+												<p>Estilo urbano con tecnología Boost</p>
+												<p>$2,899.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 8 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/veD7yaQVufIxktUJBqKQjUfr4LG79ilu9YuSyCqlkyM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90cmFp/bmlpbmdzdG9yZS5j/b20vY2RuL3Nob3Av/cHJvZHVjdHMvYWI1/MGZkNDI3MjI3NGM4/ZGE5NWZhYzlmMDA5/ZjgyNWJfOTM2Ni53/ZWJwP3Y9MTY5NTYx/MjU3MyZ3aWR0aD0x/NDQ1" alt="Reebok Nano X1" /></a>
+												<h4>Reebok Nano X1</h4>
+												<p>Para entrenamiento cruzado de alto rendimiento</p>
+												<p>$2,199.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 9 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/Jebjejf0kh1uGrrqupZk-bmvsiD2XJ1GICGiMjn7wZ4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjE2eDYzNEZGOUwu/anBn" alt="Asics Gel-Kayano 28" /></a>
+												<h4>Asics Gel-Kayano 28</h4>
+												<p>Estabilidad premium para corredores</p>
+												<p>$2,599.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 10 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/9_12oJm4Qvox97JBApPzIjB1tPuSYCHzXJvq7taAtkA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9yZXNp/emUuc3ByaW50ZXJj/ZG4uY29tL2YvMTQ0/MHgxNDQwL3Byb2R1/Y3RzLzAzNjY2NzIv/c2tlY2hlcnMtYXJj/aC1maXRfMDM2NjY3/Ml8wMF80XzMzNDA3/MDE0NzQuanBnP3c9/MTQ0MCZxPTc1" alt="Skechers Arch Fit" /></a>
+												<h4>Skechers Arch Fit</h4>
+												<p>Soporte de arco certificado por podólogos</p>
+												<p>$1,799.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+										</div>
+									</div>
+
+									<!-- Pestaña Mujeres -->
+									<div id="mujeres" class="tab-content">
+										<header>
+											<h3>Tenis para Mujeres</h3>
+											<p>Estilo y comodidad para cada ocasión</p>
+										</header>
+										<div class="row">
+											<!-- Producto 1 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/pX4gy6zfCKKuMGBh5_XFiAcdoAAAN8Sdne8_5yMgqk0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9uaWtl/Y2xwcm9kLnZ0ZXhh/c3NldHMuY29tL2Fy/cXVpdm9zL2lkcy8x/NjA3OTAtODAwLTgw/MD92PTYzNzY1NDM5/OTc2NTgzMDAwMCZ3/aWR0aD04MDAmaGVp/Z2h0PTgwMCZhc3Bl/Y3Q9dHJ1ZQ" alt="Nike Air Force 1 '07" /></a>
+												<h4>Nike Air Force 1 '07</h4>
+												<p>Icono del calzado con amortiguación Air</p>
+												<p>$2,199.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 2 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/r_85fdfKURnB4hc2fTDNTvHO5kMxY8I7fxywWH6uaIE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjFBMDlXKzJFbUwu/anBn" alt="Adidas Ultraboost 21" /></a>
+												<h4>Adidas Ultraboost 21</h4>
+												<p>Energía infinita con tecnología Boost</p>
+												<p>$3,099.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 3 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/vANd8Y-i4wgLuAjSvmXlR6ZA9T22dzR4-AXg6qHV6_Q/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NTFVWWU5dEt0WUwu/anBn" alt="Puma Cali Dream" /></a>
+												<h4>Puma Cali Dream</h4>
+												<p>Estilo vintage con suela SoftFoam+</p>
+												<p>$1,699.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 4 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/OjIuLukNKsYqCm2NEOAIFWQs-nvJsLOykx3glIF6QCQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjF5WG9ZQkdOQkwu/anBn" alt="New Balance 327" /></a>
+												<h4>New Balance 327</h4>
+												<p>Diseño retro con suela de goma</p>
+												<p>$1,899.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 5 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/OF036kKH7UoJd4gAafKSVcbM_IPpYeM2-xP8u8duoGI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zcG9y/dG1hc3RlcnMuY29t/Lm14L2Nkbi9zaG9w/L2ZpbGVzLzIxMDAw/MDAtMTA2LTAwMS5q/cGc_dj0xNzMwMjQx/ODM3JndpZHRoPTEy/MTQ" alt="Reebok Princess" /></a>
+												<h4>Reebok Princess</h4>
+												<p>Clásico renovado con amortiguación EVA</p>
+												<p>$1,599.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 6 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/mQYHKA7rCcZC4NdGxdYIPe4yUkFuD1VNnlOhzzMDOdo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMubmlrZS5jb20v/YS9pbWFnZXMvdF9Q/RFBfMTcyOF92MS9m/X2F1dG8scV9hdXRv/OmVjby9qdmNmN2Ns/aHZ6eWF2eW9wc2k5/bi9XTU5TK05JS0Ur/UkVWT0xVVElPTis1/LnBuZw" alt="Nike Revolution 5" /></a>
+												<h4>Nike Revolution 5</h4>
+												<p>Suavidad y soporte para el día a día</p>
+												<p>$1,299.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 7 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/DoeBHPmJs2YrCVdqrPPA8OGamh1iwBUItXMHzsZz8fs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9mLmZj/ZG4uYXBwL2ltZ3Mv/NzcyMjliL3d3dy5s/aXJhLmNvbS51eS9s/aXJhdXkvZWM0OS9v/cmlnaW5hbC9jYXRh/bG9nby9BRENRMjMz/Mi0zNjI4LTEvMTky/MC0xMjAwL2FkaWRh/cy1uaXp6YS1ibGFj/ay13aGl0ZS5qcGc" alt="Adidas Nizza" /></a>
+												<h4>Adidas Nizza</h4>
+												<p>Estilo casual con suela de goma</p>
+												<p>$1,399.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 8 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/-I873M5503gEmNcFoEsEZwOitWS2CdVrjTXbxCVfLyE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9yZXNp/emUuc3ByaW50ZXJj/ZG4uY29tL2YvMTQ0/MHgxNDQwL3Byb2R1/Y3RzLzU4Yjc5MjRm/NDRlODRiMzM5YTcw/YmMwMjM3ODk3MWNi/L3NhcGF0aWxoYXMt/c2tlY2hlcnMtZGxp/dGVzLTQtMF81OGI3/OTI0ZjQ0ZTg0YjMz/OWE3MGJjMDIzNzg5/NzFjYl84OTYxMzUy/NjUuanBnP3c9MTQ0/MCZxPTc1" alt="Skechers D'Lites" /></a>
+												<h4>Skechers D'Lites</h4>
+												<p>Moda deportiva con Memory Foam</p>
+												<p>$1,499.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 9 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/fCTo70b2GUottjTdRC3AhAhAb81ONfdWvlRmvl4ODX8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9kcGp5/ZTJ3azlnaTV6LmNs/b3VkZnJvbnQubmV0/L3djc3N0b3JlL0V4/dGVuZGVkU2l0ZXND/YXRhbG9nQXNzZXRT/dG9yZS9pbWFnZXMv/Y2F0YWxvZy96b29t/LzEwMDAxMDAtMDAw/MVYxLmpwZw" alt="Converse Chuck Taylor All Star" /></a>
+												<h4>Converse Chuck Taylor All Star</h4>
+												<p>Icono de la moda con suela de goma</p>
+												<p>$1,199.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 10 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/i2RBHgABeKCHfMxsDS1kgFfaDy0fYTLWshkPN1VrJYk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NzEyZjBCVHNFOEwu/anBn" alt="Vans Old Skool" /></a>
+												<h4>Vans Old Skool</h4>
+												<p>Clásico del skate con suela waffle</p>
+												<p>$1,099.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+										</div>
+									</div>
+
+									<!-- Pestaña Niños -->
+									<div id="ninos" class="tab-content">
+										<header>
+											<h3>Tenis para Niños</h3>
+											<p>Diversión y comodidad para los más pequeños</p>
+										</header>
+										<div class="row">
+											<!-- Producto 1 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/fzZARVJp033IGs01wXY8Nn4xL3G0QD-8F6JZVgooA-k/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMubmlrZS5jb20v/YS9pbWFnZXMvdF9Q/RFBfMTcyOF92MS9m/X2F1dG8scV9hdXRv/OmVjby9hZWQ5ZDI2/Yi05YzI1LTRjZGMt/OWJhOC00NDE4NmU5/N2EyODAvTklLRStS/RVZPTFVUSU9OKzUr/KFBTVikucG5n" alt="Nike Revolution 5 Niños" /></a>
+												<h4>Nike Revolution 5 Niños</h4>
+												<p>Amortiguación suave para pies en crecimiento</p>
+												<p>$899.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 2 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/HGRv4iuDEpVYTIkfFWBIX1P6uZqxr__o5zhK7TTxop8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMuYWRpZGFzLmNv/bS9pbWFnZXMvd182/MDAsZl9hdXRvLHFf/YXV0by9iMGZiOWE2/N2YxOGY0NDE0ODNm/YjI5ZDc0ZGQ1MDhj/Yl85MzY2L1phcGF0/aWxsYV9EdXJhbW9f/U0xfTmlub3NfQmxh/bmNvX0lHMjQ1OV8w/MV9zdGFuZGFyZC5q/cGc" alt="Adidas Duramo SL Niños" /></a>
+												<h4>Adidas Duramo SL Niños</h4>
+												<p>Ligeros y cómodos para el día a día</p>
+												<p>$799.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 3 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/NlgylglhLk-dVQdzcNJ1PrvJZ5t7p0NeoCl20KKhubw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucHVtYS5jb20v/aW1hZ2UvdXBsb2Fk/L2ZfYXV0byxxX2F1/dG8sYl9yZ2I6ZmFm/YWZhLHdfNjAwLGhf/NjAwL2dsb2JhbC8z/NjUxNzMvMjEvZm5k/L1BOQS9mbXQvcG5n/L1RlbmlzLXBhcmEt/bmklQzMlQjFvcy1T/bWFzaC12Mi1MZWF0/aGVy" alt="Puma Smash V2 Niños" /></a>
+												<h4>Puma Smash V2 Niños</h4>
+												<p>Clásico diseño con suela de goma</p>
+												<p>$699.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 4 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/CGCHrUnSKqZNYYjAqKbf5qfg1wqTiqxCtQLyv9CgM5A/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NzFVWXZYOGE4VEwu/anBn" alt="New Balance KJ990v4 Niños" /></a>
+												<h4>New Balance KJ990v4 Niños</h4>
+												<p>Soporte y durabilidad para juegos intensos</p>
+												<p>$999.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 5 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/8R7NyijQrL1Mqlaq0nTS0zU-qUcQPUkUaXMejG0f7vU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NTFxQ1RybVRlNUwu/anBn" alt="Skechers Lights Niños" /></a>
+												<h4>Skechers Lights Niños</h4>
+												<p>Ligeros con luces LED en el talón</p>
+												<p>$1,099.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 6 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/JR5RMOYK6L8iZHJ97nkoeo6AWr76rp2iHjEwBPCBUOw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/c2hvcGxpZ2h0c3Bl/ZWQuY29tL3Nob3Bz/LzYxMTIyOC9maWxl/cy82NzIyNTIwNi8z/MjV4Mzc1eDIvbmlr/ZS1tZXJjdXJpYWwt/c3VwZXJmbHktMTAt/Y2x1Yi1tZHMtdGYt/anItYmFyZWx5LWcu/anBn" alt="Nike Jr. Mercurial Dream Speed" /></a>
+												<h4>Nike Jr. Mercurial Dream Speed</h4>
+												<p>Para pequeños futbolistas</p>
+												<p>$1,199.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 7 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/RNT9YnwSyfm2Q6dk_ATSoT5fKRIgv53SG9wVueTbVwk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMuYWRpZGFzLmNv/bS9pbWFnZXMvd182/MDAsZl9hdXRvLHFf/YXV0by85MjIzZDFm/NWY4NzU0MTc1YjFk/YjM0YzlmNWIzNDcx/M185MzY2L1Rlbmlz/X0dyYW5kX0NvdXJ0/XzIuMF9OaW5vc19B/enVsX0lFNTk5NF8w/MV9zdGFuZGFyZC5q/cGc" alt="Adidas Grand Court Niños" /></a>
+												<h4>Adidas Grand Court Niños</h4>
+												<p>Estilo tenis con suela flexible</p>
+												<p>$799.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 8 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/tkJXVCsztTyz1ClmDkScKEiJCPp3M_bltPjl9BjzRRw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NDFuclRDb29JUUwu/anBn" alt="Puma Carina Niños" /></a>
+												<h4>Puma Carina Niños</h4>
+												<p>Estilo retro con suela SoftFoam</p>
+												<p>$899.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 9 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/0stGJ97TecosL1D3rdMDRrwhaM_ZtZHov4CPPRn1zFo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NzFiRG5ZTEpPUUwu/anBn" alt="Converse Chuck Taylor All Star Niños" /></a>
+												<h4>Converse Chuck Taylor All Star Niños</h4>
+												<p>Icono infantil con suela de goma</p>
+												<p>$699.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 10 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/tfk-tHbgTzdNCkfK-BXuktqHojkzXSED3Jpq0l_MmQw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly92YW5z/Y28udnRleGltZy5j/b20uYnIvYXJxdWl2/b3MvaWRzLzI5MzM4/MC0xMDAwLTEwMDAv/Vk4wMDBXV1g2QlQt/MS5qcGc_dj02Mzgx/NDY4NDQxMzY5MDAw/MDA" alt="Vans Authentic Niños" /></a>
+												<h4>Vans Authentic Niños</h4>
+												<p>Clásico skate con suela waffle</p>
+												<p>$799.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+										</div>
+									</div>
+								</article>
 
 							</div>
-							<div class="col-4 col-12-medium">
-
-								<!-- Sidebar -->
-									<section class="box">
-										<header>
-											<h3>Ofertas Especiales</h3>
-										</header>
-										<br>
-										<a href="#" class="image featured"><img src="https://imgs.search.brave.com/xwOdu6WbYAOIPYJ3ZscTwMXY6oz8mbaBdF5vWHwMPvM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90ZW5p/c3Nwb3J0bXguY29t/L2Nkbi9zaG9wL2Zp/bGVzL0RfODU3MDgy/LU1MTTgyNDI4MjI3/NTMwXzAyMjAyNS1C/XzM3ZjAyZWIwLTQ1/MjktNGY1Ny1hNmYy/LTZlM2IxMGU5MDI1/My5qcGc_dj0xNzQ0/ODU4ODAyJndpZHRo/PTQ4MA" alt="Oferta especial" /></a>
-										<p>Hasta 40% de descuento en modelos seleccionados de la temporada pasada. Aprovecha estos precios por tiempo limitado.</p>
-										<footer>
-											<a href="#" class="button alt">Ver todas las ofertas</a>
-										</footer>
-									</section>
-									<section class="box">
-										<header>
-											<h3>Guía de tallas</h3>
-										</header>
-										<p>¿No estás seguro de tu talla? Descarga nuestra guía completa para encontrar el ajuste perfecto.</p>
-										<ul class="divided">
-											<li><a href="#">Guía de tallas para running</a></li>
-											<li><a href="#">Guía de tallas para basketball</a></li>
-											<li><a href="#">Comparativa entre marcas</a></li>
-										</ul>
-										<footer>
-											<a href="#" class="button alt">Descargar guía</a>
-										</footer>
-									</section>
-									<section class="box">
-										<header>
-											<h3>Newsletter</h3>
-										</header>
-										<p>Recibe las últimas novedades, ofertas exclusivas y consejos para el cuidado de tus tenis.</p>
-										<form method="post" action="#">
-											<div class="row gtr-50">
-												<div class="col-12">
-													<input type="email" name="email" placeholder="Tu correo electrónico" />
-												</div>
-												<div class="col-12">
-													<input type="submit" value="Suscribirme" class="button alt" />
-												</div>
-											</div>
-										</form>
-									</section>
-
-							</div>
+							
 						</div>
 					</div>
 				</section>
@@ -185,7 +445,7 @@
 									<header>
 										<h2>¿Quiénes somos?</h2>
 									</header>
-									<a href="#" class="image featured"><img src="https://imgs.search.brave.com/liDJ6KnDtGfcAByXjtHcO1kmd6unfKiE_U5ZaWxgMlo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/aW5mb2JhZS5jb20v/cmVzaXplci92Mi9O/R0VaR00zTUs1QUo1/SVdRNlNPVVZVTEJT/US5qcGc_YXV0aD02/ODc2ZmNlMmY3MDE3/NTZiMTA5M2Q2NGUx/ZDhjYTk5ZDU2MGFk/NjcxZDg1MjRkMjFm/YzkyYWIwNjEyZDgx/NmZjJnNtYXJ0PXRy/dWUmd2lkdGg9MzUw/JmhlaWdodD0xOTcm/cXVhbGl0eT04NQ" alt="Nuestra tienda física" /></a>
+									<a href="#" class="image featured"><img src="IMAGEN_TIENDA" alt="Nuestra tienda física" /></a>
 									<p>
 										<strong>SportStep</strong> es una tienda especializada en calzado deportivo desde 2010. Combinamos productos de las mejores marcas con asesoramiento experto para que encuentres exactamente lo que necesitas.
 									</p>
@@ -269,6 +529,26 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				// Función para cambiar entre pestañas
+				function openTab(evt, tabName) {
+					// Oculta todos los contenidos de pestañas
+					var tabcontents = document.getElementsByClassName("tab-content");
+					for (var i = 0; i < tabcontents.length; i++) {
+						tabcontents[i].classList.remove("active");
+					}
+					
+					// Desactiva todos los botones de pestañas
+					var tabbuttons = document.getElementsByClassName("tab-button");
+					for (var i = 0; i < tabbuttons.length; i++) {
+						tabbuttons[i].classList.remove("active");
+					}
+					
+					// Muestra la pestaña actual y activa su botón
+					document.getElementById(tabName).classList.add("active");
+					evt.currentTarget.classList.add("active");
+				}
+			</script>
 
 	</body>
 </html>
