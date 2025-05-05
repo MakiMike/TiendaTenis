@@ -1,146 +1,418 @@
 <!DOCTYPE HTML>
-<!--
-	Dopetrope by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
-		<title>Dopetrope by HTML5 UP</title>
+		<title>SportStep - Tienda de Tenis Online</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			/* Estilos adicionales para las pestañas */
+			.tabs {
+				display: flex;
+				margin-bottom: 20px;
+				border-bottom: 1px solid #ddd;
+			}
+			.tab-button {
+				padding: 10px 20px;
+				cursor: pointer;
+				background: #f3f3f3;
+				border: 1px solid #ddd;
+				border-bottom: none;
+				margin-right: 5px;
+				border-radius: 5px 5px 0 0;
+				font-weight: 700;
+				transition: all 0.3s ease;
+			}
+			.tab-button:hover {
+				background: #e0e0e0;
+			}
+			.tab-button.active {
+				background: #d52349;
+				color: white;
+				border-color: #d52349;
+			}
+			.tab-content {
+				display: none;
+				padding: 20px 0;
+			}
+			.tab-content.active {
+				display: block;
+			}
+
+			/* Estilo para las imágenes de productos */
+			.image.fit img {
+				width: 320px;
+				height: 320px;
+				object-fit: cover; /* Mantiene la proporción recortando si es necesario */
+				object-position: center; /* Centra la imagen */
+				display: block;
+				margin: 0 auto; /* Centra la imagen horizontalmente */
+				border-radius: 5px; /* Bordes redondeados opcionales */
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+				transition: transform 0.3s ease; /* Efecto hover opcional */
+			}
+
+			/* Efecto hover para mejorar la interacción */
+			.image.fit img:hover {
+				transform: scale(1.05); /* Ligero zoom al pasar el mouse */
+				box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+			}
+
+			/* Ajuste responsive para pantallas más pequeñas */
+			@media screen and (max-width: 736px) {
+				.image.fit img {
+					width: 280px;
+					height: 280px;
+				}
+			}
+
+			/* Ajuste para el sidebar */
+			.sidebar .image.fit img {
+				width: 100%; /* Para que ocupe el ancho del contenedor */
+				height: auto; /* Mantener proporción */
+				max-height: 320px;
+			}
+
+			/* Para la imagen destacada del artículo */
+			.article .image.featured img {
+				width: 100%;
+				height: auto;
+				max-height: 400px; /* Más grande para la imagen principal */
+			}
+		</style>
 	</head>
 	<body class="right-sidebar is-preload">
 		<div id="page-wrapper">
 
 			<!-- Header -->
 				<section id="header">
-
 					<!-- Logo -->
-						<h1><a href="index.html">Dopetrope</a></h1>
+						<h1><a href="index.html">SportStep</a></h1>
+						<p>Tu paso hacia el mejor calzado deportivo</p>
 
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li><a href="index.html">Home</a></li>
+								<li><a href="index.html">Inicio</a></li>
 								<li>
-									<a href="#">Dropdown</a>
+									<a href="#">Categorías</a>
 									<ul>
-										<li><a href="#">Lorem ipsum dolor</a></li>
-										<li><a href="#">Magna phasellus</a></li>
-										<li><a href="#">Etiam dolore nisl</a></li>
+										<li><a href="#">Tenis de Running</a></li>
+										<li><a href="#">Tenis de Basketball</a></li>
+										<li><a href="#">Tenis Casual</a></li>
 										<li>
-											<a href="#">Phasellus consequat</a>
+											<a href="#">Marcas</a>
 											<ul>
-												<li><a href="#">Magna phasellus</a></li>
-												<li><a href="#">Etiam dolore nisl</a></li>
-												<li><a href="#">Veroeros feugiat</a></li>
-												<li><a href="#">Nisl sed aliquam</a></li>
-												<li><a href="#">Dolore adipiscing</a></li>
+												<li><a href="#">Nike</a></li>
+												<li><a href="#">Adidas</a></li>
+												<li><a href="#">Puma</a></li>
+												<li><a href="#">New Balance</a></li>
+												<li><a href="#">Under Armour</a></li>
 											</ul>
 										</li>
-										<li><a href="#">Veroeros feugiat</a></li>
+										<li><a href="#">Ofertas</a></li>
 									</ul>
 								</li>
-								<li><a href="left-sidebar.html">Left Sidebar</a></li>
-								<li class="current"><a href="right-sidebar.html">Right Sidebar</a></li>
-								<li><a href="no-sidebar.html">No Sidebar</a></li>
+								<li><a href="left-sidebar.html">Ofertas</a></li>
+								<li class="current"><a href="right-sidebar.html">Tenis</a></li>
+								<li><a href="no-sidebar.html">Contacto</a></li>
 							</ul>
 						</nav>
-
 				</section>
 
 			<!-- Main -->
 				<section id="main">
 					<div class="container">
 						<div class="row">
-							<div class="col-8 col-12-medium">
+							<div class="col-20 col-28-medium">
 
-								<!-- Content -->
-									<article class="box post">
-										<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+								<!-- Contenido Principal -->
+								<article class="box post">
+									<header>
+										<h2>Catálogo Completo de Tenis</h2>
+										<p>Encuentra el calzado perfecto para cada miembro de la familia</p>
+									</header>
+
+									<!-- Sistema de Pestañas -->
+									<div class="tabs">
+										<button class="tab-button active" onclick="openTab(event, 'hombres')">Hombres</button>
+										<button class="tab-button" onclick="openTab(event, 'mujeres')">Mujeres</button>
+										<button class="tab-button" onclick="openTab(event, 'ninos')">Niños</button>
+									</div>
+
+									<!-- Pestaña Hombres -->
+									<div id="hombres" class="tab-content active">
 										<header>
-											<h2>Right sidebar</h2>
-											<p>Lorem ipsum dolor sit amet feugiat</p>
+											<h3>Tenis para Hombres</h3>
+											<p>Rendimiento y estilo para el día a día</p>
 										</header>
-										<p>
-											Vestibulum scelerisque ultricies libero id hendrerit. Vivamus malesuada quam faucibus ante dignissim auctor
-											hendrerit libero placerat. Nulla facilisi. Proin aliquam felis non arcu molestie at accumsan turpis commodo.
-											Proin elementum, nibh non egestas sodales, augue quam aliquet est, id egestas diam justo adipiscing ante.
-											Pellentesque tempus nulla non urna eleifend ut ultrices nisi faucibus.
-										</p>
-										<p>
-											Praesent a dolor leo. Duis in felis in tortor lobortis volutpat et pretium tellus. Vestibulum ac ante nisl,
-											a elementum odio. Duis semper risus et lectus commodo fringilla. Maecenas sagittis convallis justo vel mattis.
-											placerat, nunc diam iaculis massa, et aliquet nibh leo non nisl vitae porta lobortis, enim neque fringilla nunc,
-											eget faucibus lacus sem quis nunc suspendisse nec lectus sit amet augue rutrum vulputate ut ut mi. Aenean
-											elementum, mi sit amet porttitor lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor
-											sit amet nullam consequat feugiat dolore tempus.
-										</p>
-										<section>
-											<header>
-												<h3>Something else</h3>
-											</header>
-											<p>
-												Elementum odio duis semper risus et lectus commodo fringilla. Maecenas sagittis convallis justo vel mattis.
-												placerat, nunc diam iaculis massa, et aliquet nibh leo non nisl vitae porta lobortis, enim neque fringilla nunc,
-												eget faucibus lacus sem quis nunc suspendisse nec lectus sit amet augue rutrum vulputate ut ut mi. Aenean
-												elementum, mi sit amet porttitor lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor
-												sit amet nullam consequat feugiat dolore tempus.
-											</p>
-											<p>
-												Nunc diam iaculis massa, et aliquet nibh leo non nisl vitae porta lobortis, enim neque fringilla nunc,
-												eget faucibus lacus sem quis nunc suspendisse nec lectus sit amet augue rutrum vulputate ut ut mi. Aenean
-												elementum, mi sit amet porttitor lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor
-												sit amet nullam consequat feugiat dolore tempus.
-											</p>
-										</section>
-										<section>
-											<header>
-												<h3>So in conclusion ...</h3>
-											</header>
-											<p>
-												Nunc diam iaculis massa, et aliquet nibh leo non nisl vitae porta lobortis, enim neque fringilla nunc,
-												eget faucibus lacus sem quis nunc suspendisse nec lectus sit amet augue rutrum vulputate ut ut mi. Aenean
-												elementum, mi sit amet porttitor lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor
-												sit amet nullam consequat feugiat dolore tempus. Elementum odio duis semper risus et lectus commodo fringilla.
-												Maecenas sagittis convallis justo vel mattis.
-											</p>
-										</section>
-									</article>
+										<div class="row">
+											<!-- Producto 1 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/7Q8L5oYDJfAoxbgcj7zEb1BVmL5ZttCS7KiRMYHNoCc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NzFnLWQzQlQ0Tkwu/anBn" alt="Nike Air Max 270" /></a>
+												<h4>Nike Air Max 270</h4>
+												<p>Amortiguación ultra cómoda para todo el día</p>
+												<p>$2,799.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 2 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/TD4iQbQpMrcqM5z-fw-cjUA9HMG1gMlpCXP2gG_bBTU/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vNDlmT1Za/bHdaMkVVaXlMN05E/bkhJamlNb2FPb2Yz/bGJONnFyem8tczds/dy9yczpmaXQ6NTYw/OjMyMDoxOjAvZzpj/ZS9hSFIwY0hNNkx5/OXRMbTFsL1pHbGhM/V0Z0WVhwdmJpNWov/YjIwdmFXMWhaMlZ6/TDBrdi9OVEZMYjFG/VlUwWllUMHd1L2Fu/Qm4.jpeg" alt="Adidas Ultraboost 22" /></a>
+												<h4>Adidas Ultraboost 22</h4>
+												<p>Tecnología Boost para máxima energía</p>
+												<p>$3,199.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 3 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/v6nDZj-2aAGMAvkPfVou3e4GPzEc0ys2VcvjENy4A8E/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vcFJMQWNN/ak1YcWYyS3hwZGt2/UWFHUzNtbFJha0Fa/dllabFdFdlF5MnBB/OC9yczpmaXQ6NTYw/OjMyMDoxOjAvZzpj/ZS9hSFIwY0hNNkx5/OXRMbTFsL1pHbGhM/V0Z0WVhwdmJpNWov/YjIwdmFXMWhaMlZ6/TDBrdi9OREZGUkhs/TmVtOHlTMHd1L2Fu/Qm4.jpeg" alt="Puma RS-X" /></a>
+												<h4>Puma RS-X</h4>
+												<p>Estilo retro con comodidad moderna</p>
+												<p>$1,899.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 4 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/eQMzb8Tu0eML5qYwi9ZIA5372aWHnIrlDSJqfnsuYp8/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NTExWjUxNVZ0R0wu/anBn" alt="New Balance 574" /></a>
+												<h4>New Balance 574</h4>
+												<p>Clásico atemporal con suela ENCAP</p>
+												<p>$1,699.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 5 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/FAkMd4pYwsQ29Yzp2o3rzaogAc-o1uNVTiYs4u-Do-M/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjFOVFgtUDBHQ0wu/anBn" alt="Under Armour HOVR Phantom" /></a>
+												<h4>Under Armour HOVR Phantom</h4>
+												<p>Tecnología HOVR para carrera suave</p>
+												<p>$2,499.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 6 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/fqb3A3qy1--n48E8SeKlOvMe-v73PTMI-jqBfiQtPMA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjE5UkFmTGpraEwu/anBn" alt="Nike React Infinity Run" /></a>
+												<h4>Nike React Infinity Run</h4>
+												<p>Para corredores que buscan reducir lesiones</p>
+												<p>$3,299.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 7 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/VUb4t9H47uiwkd4NMT7bbQqCjyMtrvN6P6KFMxQjwr0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9yZXNv/dXJjZXMuY2xhcm9z/aG9wLmNvbS9tZWRp/b3MtcGxhemF2aXAv/bWt0LzY0NzE0M2Ez/ZGZlM2VfZnY5MDE4/X2FhenVsanBnLmpw/Zz9zY2FsZT01MDAm/cWx0eT03NQ" alt="Adidas NMD R1" /></a>
+												<h4>Adidas NMD R1</h4>
+												<p>Estilo urbano con tecnología Boost</p>
+												<p>$2,899.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 8 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/veD7yaQVufIxktUJBqKQjUfr4LG79ilu9YuSyCqlkyM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90cmFp/bmlpbmdzdG9yZS5j/b20vY2RuL3Nob3Av/cHJvZHVjdHMvYWI1/MGZkNDI3MjI3NGM4/ZGE5NWZhYzlmMDA5/ZjgyNWJfOTM2Ni53/ZWJwP3Y9MTY5NTYx/MjU3MyZ3aWR0aD0x/NDQ1" alt="Reebok Nano X1" /></a>
+												<h4>Reebok Nano X1</h4>
+												<p>Para entrenamiento cruzado de alto rendimiento</p>
+												<p>$2,199.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 9 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/Jebjejf0kh1uGrrqupZk-bmvsiD2XJ1GICGiMjn7wZ4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjE2eDYzNEZGOUwu/anBn" alt="Asics Gel-Kayano 28" /></a>
+												<h4>Asics Gel-Kayano 28</h4>
+												<p>Estabilidad premium para corredores</p>
+												<p>$2,599.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 10 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/9_12oJm4Qvox97JBApPzIjB1tPuSYCHzXJvq7taAtkA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9yZXNp/emUuc3ByaW50ZXJj/ZG4uY29tL2YvMTQ0/MHgxNDQwL3Byb2R1/Y3RzLzAzNjY2NzIv/c2tlY2hlcnMtYXJj/aC1maXRfMDM2NjY3/Ml8wMF80XzMzNDA3/MDE0NzQuanBnP3c9/MTQ0MCZxPTc1" alt="Skechers Arch Fit" /></a>
+												<h4>Skechers Arch Fit</h4>
+												<p>Soporte de arco certificado por podólogos</p>
+												<p>$1,799.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+										</div>
+									</div>
+
+									<!-- Pestaña Mujeres -->
+									<div id="mujeres" class="tab-content">
+										<header>
+											<h3>Tenis para Mujeres</h3>
+											<p>Estilo y comodidad para cada ocasión</p>
+										</header>
+										<div class="row">
+											<!-- Producto 1 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/pX4gy6zfCKKuMGBh5_XFiAcdoAAAN8Sdne8_5yMgqk0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9uaWtl/Y2xwcm9kLnZ0ZXhh/c3NldHMuY29tL2Fy/cXVpdm9zL2lkcy8x/NjA3OTAtODAwLTgw/MD92PTYzNzY1NDM5/OTc2NTgzMDAwMCZ3/aWR0aD04MDAmaGVp/Z2h0PTgwMCZhc3Bl/Y3Q9dHJ1ZQ" alt="Nike Air Force 1 '07" /></a>
+												<h4>Nike Air Force 1 '07</h4>
+												<p>Icono del calzado con amortiguación Air</p>
+												<p>$2,199.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 2 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/r_85fdfKURnB4hc2fTDNTvHO5kMxY8I7fxywWH6uaIE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjFBMDlXKzJFbUwu/anBn" alt="Adidas Ultraboost 21" /></a>
+												<h4>Adidas Ultraboost 21</h4>
+												<p>Energía infinita con tecnología Boost</p>
+												<p>$3,099.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 3 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/vANd8Y-i4wgLuAjSvmXlR6ZA9T22dzR4-AXg6qHV6_Q/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NTFVWWU5dEt0WUwu/anBn" alt="Puma Cali Dream" /></a>
+												<h4>Puma Cali Dream</h4>
+												<p>Estilo vintage con suela SoftFoam+</p>
+												<p>$1,699.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 4 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/OjIuLukNKsYqCm2NEOAIFWQs-nvJsLOykx3glIF6QCQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjF5WG9ZQkdOQkwu/anBn" alt="New Balance 327" /></a>
+												<h4>New Balance 327</h4>
+												<p>Diseño retro con suela de goma</p>
+												<p>$1,899.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 5 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/OF036kKH7UoJd4gAafKSVcbM_IPpYeM2-xP8u8duoGI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zcG9y/dG1hc3RlcnMuY29t/Lm14L2Nkbi9zaG9w/L2ZpbGVzLzIxMDAw/MDAtMTA2LTAwMS5q/cGc_dj0xNzMwMjQx/ODM3JndpZHRoPTEy/MTQ" alt="Reebok Princess" /></a>
+												<h4>Reebok Princess</h4>
+												<p>Clásico renovado con amortiguación EVA</p>
+												<p>$1,599.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 6 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/mQYHKA7rCcZC4NdGxdYIPe4yUkFuD1VNnlOhzzMDOdo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMubmlrZS5jb20v/YS9pbWFnZXMvdF9Q/RFBfMTcyOF92MS9m/X2F1dG8scV9hdXRv/OmVjby9qdmNmN2Ns/aHZ6eWF2eW9wc2k5/bi9XTU5TK05JS0Ur/UkVWT0xVVElPTis1/LnBuZw" alt="Nike Revolution 5" /></a>
+												<h4>Nike Revolution 5</h4>
+												<p>Suavidad y soporte para el día a día</p>
+												<p>$1,299.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 7 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/DoeBHPmJs2YrCVdqrPPA8OGamh1iwBUItXMHzsZz8fs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9mLmZj/ZG4uYXBwL2ltZ3Mv/NzcyMjliL3d3dy5s/aXJhLmNvbS51eS9s/aXJhdXkvZWM0OS9v/cmlnaW5hbC9jYXRh/bG9nby9BRENRMjMz/Mi0zNjI4LTEvMTky/MC0xMjAwL2FkaWRh/cy1uaXp6YS1ibGFj/ay13aGl0ZS5qcGc" alt="Adidas Nizza" /></a>
+												<h4>Adidas Nizza</h4>
+												<p>Estilo casual con suela de goma</p>
+												<p>$1,399.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 8 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/-I873M5503gEmNcFoEsEZwOitWS2CdVrjTXbxCVfLyE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9yZXNp/emUuc3ByaW50ZXJj/ZG4uY29tL2YvMTQ0/MHgxNDQwL3Byb2R1/Y3RzLzU4Yjc5MjRm/NDRlODRiMzM5YTcw/YmMwMjM3ODk3MWNi/L3NhcGF0aWxoYXMt/c2tlY2hlcnMtZGxp/dGVzLTQtMF81OGI3/OTI0ZjQ0ZTg0YjMz/OWE3MGJjMDIzNzg5/NzFjYl84OTYxMzUy/NjUuanBnP3c9MTQ0/MCZxPTc1" alt="Skechers D'Lites" /></a>
+												<h4>Skechers D'Lites</h4>
+												<p>Moda deportiva con Memory Foam</p>
+												<p>$1,499.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 9 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/fCTo70b2GUottjTdRC3AhAhAb81ONfdWvlRmvl4ODX8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9kcGp5/ZTJ3azlnaTV6LmNs/b3VkZnJvbnQubmV0/L3djc3N0b3JlL0V4/dGVuZGVkU2l0ZXND/YXRhbG9nQXNzZXRT/dG9yZS9pbWFnZXMv/Y2F0YWxvZy96b29t/LzEwMDAxMDAtMDAw/MVYxLmpwZw" alt="Converse Chuck Taylor All Star" /></a>
+												<h4>Converse Chuck Taylor All Star</h4>
+												<p>Icono de la moda con suela de goma</p>
+												<p>$1,199.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 10 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/i2RBHgABeKCHfMxsDS1kgFfaDy0fYTLWshkPN1VrJYk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NzEyZjBCVHNFOEwu/anBn" alt="Vans Old Skool" /></a>
+												<h4>Vans Old Skool</h4>
+												<p>Clásico del skate con suela waffle</p>
+												<p>$1,099.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+										</div>
+									</div>
+
+									<!-- Pestaña Niños -->
+									<div id="ninos" class="tab-content">
+										<header>
+											<h3>Tenis para Niños</h3>
+											<p>Diversión y comodidad para los más pequeños</p>
+										</header>
+										<div class="row">
+											<!-- Producto 1 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/fzZARVJp033IGs01wXY8Nn4xL3G0QD-8F6JZVgooA-k/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMubmlrZS5jb20v/YS9pbWFnZXMvdF9Q/RFBfMTcyOF92MS9m/X2F1dG8scV9hdXRv/OmVjby9hZWQ5ZDI2/Yi05YzI1LTRjZGMt/OWJhOC00NDE4NmU5/N2EyODAvTklLRStS/RVZPTFVUSU9OKzUr/KFBTVikucG5n" alt="Nike Revolution 5 Niños" /></a>
+												<h4>Nike Revolution 5 Niños</h4>
+												<p>Amortiguación suave para pies en crecimiento</p>
+												<p>$899.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 2 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/HGRv4iuDEpVYTIkfFWBIX1P6uZqxr__o5zhK7TTxop8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMuYWRpZGFzLmNv/bS9pbWFnZXMvd182/MDAsZl9hdXRvLHFf/YXV0by9iMGZiOWE2/N2YxOGY0NDE0ODNm/YjI5ZDc0ZGQ1MDhj/Yl85MzY2L1phcGF0/aWxsYV9EdXJhbW9f/U0xfTmlub3NfQmxh/bmNvX0lHMjQ1OV8w/MV9zdGFuZGFyZC5q/cGc" alt="Adidas Duramo SL Niños" /></a>
+												<h4>Adidas Duramo SL Niños</h4>
+												<p>Ligeros y cómodos para el día a día</p>
+												<p>$799.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 3 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/NlgylglhLk-dVQdzcNJ1PrvJZ5t7p0NeoCl20KKhubw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucHVtYS5jb20v/aW1hZ2UvdXBsb2Fk/L2ZfYXV0byxxX2F1/dG8sYl9yZ2I6ZmFm/YWZhLHdfNjAwLGhf/NjAwL2dsb2JhbC8z/NjUxNzMvMjEvZm5k/L1BOQS9mbXQvcG5n/L1RlbmlzLXBhcmEt/bmklQzMlQjFvcy1T/bWFzaC12Mi1MZWF0/aGVy" alt="Puma Smash V2 Niños" /></a>
+												<h4>Puma Smash V2 Niños</h4>
+												<p>Clásico diseño con suela de goma</p>
+												<p>$699.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 4 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/CGCHrUnSKqZNYYjAqKbf5qfg1wqTiqxCtQLyv9CgM5A/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NzFVWXZYOGE4VEwu/anBn" alt="New Balance KJ990v4 Niños" /></a>
+												<h4>New Balance KJ990v4 Niños</h4>
+												<p>Soporte y durabilidad para juegos intensos</p>
+												<p>$999.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 5 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/8R7NyijQrL1Mqlaq0nTS0zU-qUcQPUkUaXMejG0f7vU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NTFxQ1RybVRlNUwu/anBn" alt="Skechers Lights Niños" /></a>
+												<h4>Skechers Lights Niños</h4>
+												<p>Ligeros con luces LED en el talón</p>
+												<p>$1,099.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 6 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/JR5RMOYK6L8iZHJ97nkoeo6AWr76rp2iHjEwBPCBUOw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/c2hvcGxpZ2h0c3Bl/ZWQuY29tL3Nob3Bz/LzYxMTIyOC9maWxl/cy82NzIyNTIwNi8z/MjV4Mzc1eDIvbmlr/ZS1tZXJjdXJpYWwt/c3VwZXJmbHktMTAt/Y2x1Yi1tZHMtdGYt/anItYmFyZWx5LWcu/anBn" alt="Nike Jr. Mercurial Dream Speed" /></a>
+												<h4>Nike Jr. Mercurial Dream Speed</h4>
+												<p>Para pequeños futbolistas</p>
+												<p>$1,199.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 7 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/RNT9YnwSyfm2Q6dk_ATSoT5fKRIgv53SG9wVueTbVwk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMuYWRpZGFzLmNv/bS9pbWFnZXMvd182/MDAsZl9hdXRvLHFf/YXV0by85MjIzZDFm/NWY4NzU0MTc1YjFk/YjM0YzlmNWIzNDcx/M185MzY2L1Rlbmlz/X0dyYW5kX0NvdXJ0/XzIuMF9OaW5vc19B/enVsX0lFNTk5NF8w/MV9zdGFuZGFyZC5q/cGc" alt="Adidas Grand Court Niños" /></a>
+												<h4>Adidas Grand Court Niños</h4>
+												<p>Estilo tenis con suela flexible</p>
+												<p>$799.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 8 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/tkJXVCsztTyz1ClmDkScKEiJCPp3M_bltPjl9BjzRRw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NDFuclRDb29JUUwu/anBn" alt="Puma Carina Niños" /></a>
+												<h4>Puma Carina Niños</h4>
+												<p>Estilo retro con suela SoftFoam</p>
+												<p>$899.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 9 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/0stGJ97TecosL1D3rdMDRrwhaM_ZtZHov4CPPRn1zFo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NzFiRG5ZTEpPUUwu/anBn" alt="Converse Chuck Taylor All Star Niños" /></a>
+												<h4>Converse Chuck Taylor All Star Niños</h4>
+												<p>Icono infantil con suela de goma</p>
+												<p>$699.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+											<!-- Producto 10 -->
+											<div class="col-6 col-12-small">
+												<a href="#" class="image fit"><img src="https://imgs.search.brave.com/tfk-tHbgTzdNCkfK-BXuktqHojkzXSED3Jpq0l_MmQw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly92YW5z/Y28udnRleGltZy5j/b20uYnIvYXJxdWl2/b3MvaWRzLzI5MzM4/MC0xMDAwLTEwMDAv/Vk4wMDBXV1g2QlQt/MS5qcGc_dj02Mzgx/NDY4NDQxMzY5MDAw/MDA" alt="Vans Authentic Niños" /></a>
+												<h4>Vans Authentic Niños</h4>
+												<p>Clásico skate con suela waffle</p>
+												<p>$799.00 MXN</p>
+												<a href="#" class="button">Agregar al carrito</a>
+											</div>
+										</div>
+									</div>
+								</article>
 
 							</div>
-							<div class="col-4 col-12-medium">
-
-								<!-- Sidebar -->
-									<section class="box">
-										<a href="#" class="image featured"><img src="images/pic09.jpg" alt="" /></a>
-										<header>
-											<h3>Sed etiam lorem nulla</h3>
-										</header>
-										<p>Lorem ipsum dolor sit amet sit veroeros sed amet blandit consequat veroeros lorem blandit  adipiscing et feugiat phasellus tempus dolore ipsum lorem dolore.</p>
-										<footer>
-											<a href="#" class="button alt">Magna sed taciti</a>
-										</footer>
-									</section>
-									<section class="box">
-										<header>
-											<h3>Feugiat consequat</h3>
-										</header>
-										<p>Veroeros sed amet blandit consequat veroeros lorem blandit adipiscing et feugiat sed lorem consequat feugiat lorem dolore.</p>
-										<ul class="divided">
-											<li><a href="#">Sed et blandit consequat sed</a></li>
-											<li><a href="#">Hendrerit tortor vitae sapien dolore</a></li>
-											<li><a href="#">Sapien id suscipit magna sed felis</a></li>
-											<li><a href="#">Aptent taciti sociosqu ad litora</a></li>
-										</ul>
-										<footer>
-											<a href="#" class="button alt">Ipsum consequat</a>
-										</footer>
-									</section>
-
-							</div>
+							
 						</div>
 					</div>
 				</section>
@@ -152,33 +424,18 @@
 							<div class="col-8 col-12-medium">
 								<section>
 									<header>
-										<h2>Blandit nisl adipiscing</h2>
+										<h2>Novedades y Blog</h2>
 									</header>
 									<ul class="dates">
 										<li>
-											<span class="date">Jan <strong>27</strong></span>
-											<h3><a href="#">Lorem dolor sit amet veroeros</a></h3>
-											<p>Ipsum dolor sit amet veroeros consequat blandit ipsum phasellus lorem consequat etiam.</p>
+											<span class="date">Nov <strong>15</strong></span>
+											<h3><a href="#">Cómo elegir los mejores tenis para correr</a></h3>
+											<p>Guía completa para seleccionar el calzado adecuado según tu tipo de pisada y distancia.</p>
 										</li>
 										<li>
-											<span class="date">Jan <strong>23</strong></span>
-											<h3><a href="#">Ipsum sed blandit nisl consequat</a></h3>
-											<p>Blandit phasellus lorem ipsum dolor tempor sapien tortor hendrerit adipiscing feugiat lorem.</p>
-										</li>
-										<li>
-											<span class="date">Jan <strong>15</strong></span>
-											<h3><a href="#">Magna tempus lorem feugiat</a></h3>
-											<p>Dolore consequat sed phasellus lorem sed etiam nullam dolor etiam sed amet sit consequat.</p>
-										</li>
-										<li>
-											<span class="date">Jan <strong>12</strong></span>
-											<h3><a href="#">Dolore tempus ipsum feugiat nulla</a></h3>
-											<p>Feugiat lorem dolor sed nullam tempus lorem ipsum dolor sit amet nullam consequat.</p>
-										</li>
-										<li>
-											<span class="date">Jan <strong>10</strong></span>
-											<h3><a href="#">Blandit tempus aliquam?</a></h3>
-											<p>Feugiat sed tempus blandit tempus adipiscing nisl lorem ipsum dolor sit amet dolore.</p>
+											<span class="date">Nov <strong>10</strong></span>
+											<h3><a href="#">Los tenis más cómodos para trabajar de pie</a></h3>
+											<p>Descubre qué modelos ofrecen mejor soporte para largas jornadas.</p>
 										</li>
 									</ul>
 								</section>
@@ -186,17 +443,15 @@
 							<div class="col-4 col-12-medium">
 								<section>
 									<header>
-										<h2>What's this all about?</h2>
+										<h2>¿Quiénes somos?</h2>
 									</header>
-									<a href="#" class="image featured"><img src="images/pic10.jpg" alt="" /></a>
+									<a href="#" class="image featured"><img src="IMAGEN_TIENDA" alt="Nuestra tienda física" /></a>
 									<p>
-										This is <strong>Dopetrope</strong> a free, fully responsive HTML5 site template by
-										<a href="http://twitter.com/ajlkn">AJ</a> for <a href="http://html5up.net/">HTML5 UP</a> It's released for free under
-										the <a href="http://html5up.net/license/">Creative Commons Attribution</a> license so feel free to use it for any personal or commercial project &ndash; just don't forget to credit us!
+										<strong>SportStep</strong> es una tienda especializada en calzado deportivo desde 2010. Combinamos productos de las mejores marcas con asesoramiento experto para que encuentres exactamente lo que necesitas.
 									</p>
 									<footer>
 										<ul class="actions">
-											<li><a href="#" class="button">Find out more</a></li>
+											<li><a href="#" class="button">Conoce nuestra historia</a></li>
 										</ul>
 									</footer>
 								</section>
@@ -204,61 +459,49 @@
 							<div class="col-4 col-6-medium col-12-small">
 								<section>
 									<header>
-										<h2>Tempus consequat</h2>
+										<h2>Enlaces rápidos</h2>
 									</header>
 									<ul class="divided">
-										<li><a href="#">Lorem ipsum dolor sit amet sit veroeros</a></li>
-										<li><a href="#">Sed et blandit consequat sed tlorem blandit</a></li>
-										<li><a href="#">Adipiscing feugiat phasellus sed tempus</a></li>
-										<li><a href="#">Hendrerit tortor vitae mattis tempor sapien</a></li>
-										<li><a href="#">Sem feugiat sapien id suscipit magna felis nec</a></li>
-										<li><a href="#">Elit class aptent taciti sociosqu ad litora</a></li>
+										<li><a href="#">Estado de mi pedido</a></li>
+										<li><a href="#">Política de devoluciones</a></li>
+										<li><a href="#">Preguntas frecuentes</a></li>
+										<li><a href="#">Métodos de pago</a></li>
+										<li><a href="#">Guía de cuidados</a></li>
 									</ul>
 								</section>
 							</div>
 							<div class="col-4 col-6-medium col-12-small">
 								<section>
 									<header>
-										<h2>Ipsum et phasellus</h2>
+										<h2>Servicio al cliente</h2>
 									</header>
 									<ul class="divided">
-										<li><a href="#">Lorem ipsum dolor sit amet sit veroeros</a></li>
-										<li><a href="#">Sed et blandit consequat sed tlorem blandit</a></li>
-										<li><a href="#">Adipiscing feugiat phasellus sed tempus</a></li>
-										<li><a href="#">Hendrerit tortor vitae mattis tempor sapien</a></li>
-										<li><a href="#">Sem feugiat sapien id suscipit magna felis nec</a></li>
-										<li><a href="#">Elit class aptent taciti sociosqu ad litora</a></li>
+										<li><a href="#">Chat en vivo</a></li>
+										<li><a href="#">WhatsApp: 55-1234-5678</a></li>
+										<li><a href="#">Email: contacto@sportstep.mx</a></li>
+										<li><a href="#">Horario: L-V 9am-7pm</a></li>
 									</ul>
 								</section>
 							</div>
 							<div class="col-4 col-12-medium">
 								<section>
 									<header>
-										<h2>Vitae tempor lorem</h2>
+										<h2>Síguenos</h2>
 									</header>
 									<ul class="social">
 										<li><a class="icon brands fa-facebook-f" href="#"><span class="label">Facebook</span></a></li>
+										<li><a class="icon brands fa-instagram" href="#"><span class="label">Instagram</span></a></li>
 										<li><a class="icon brands fa-twitter" href="#"><span class="label">Twitter</span></a></li>
-										<li><a class="icon brands fa-dribbble" href="#"><span class="label">Dribbble</span></a></li>
-										<li><a class="icon brands fa-tumblr" href="#"><span class="label">Tumblr</span></a></li>
-										<li><a class="icon brands fa-linkedin-in" href="#"><span class="label">LinkedIn</span></a></li>
+										<li><a class="icon brands fa-youtube" href="#"><span class="label">YouTube</span></a></li>
 									</ul>
 									<ul class="contact">
 										<li>
-											<h3>Address</h3>
+											<h3>Dirección</h3>
 											<p>
-												Untitled Incorporated<br />
-												1234 Somewhere Road Suite<br />
-												Nashville, TN 00000-0000
+												SportStep México<br />
+												Av. Insurgentes Sur 1234<br />
+												Col. Condesa, CDMX
 											</p>
-										</li>
-										<li>
-											<h3>Mail</h3>
-											<p><a href="#">someone@untitled.tld</a></p>
-										</li>
-										<li>
-											<h3>Phone</h3>
-											<p>(800) 000-0000</p>
 										</li>
 									</ul>
 								</section>
@@ -268,7 +511,7 @@
 								<!-- Copyright -->
 									<div id="copyright">
 										<ul class="links">
-											<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+											<li>&copy; SportStep 2023. Todos los derechos reservados.</li><li>Design: Adaptado de <a href="http://html5up.net">HTML5 UP</a></li>
 										</ul>
 									</div>
 
@@ -286,6 +529,26 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				// Función para cambiar entre pestañas
+				function openTab(evt, tabName) {
+					// Oculta todos los contenidos de pestañas
+					var tabcontents = document.getElementsByClassName("tab-content");
+					for (var i = 0; i < tabcontents.length; i++) {
+						tabcontents[i].classList.remove("active");
+					}
+					
+					// Desactiva todos los botones de pestañas
+					var tabbuttons = document.getElementsByClassName("tab-button");
+					for (var i = 0; i < tabbuttons.length; i++) {
+						tabbuttons[i].classList.remove("active");
+					}
+					
+					// Muestra la pestaña actual y activa su botón
+					document.getElementById(tabName).classList.add("active");
+					evt.currentTarget.classList.add("active");
+				}
+			</script>
 
 	</body>
 </html>
